@@ -21,9 +21,10 @@ RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local
 WORKDIR /var/www/html
 
 # 复制 Laravel 项目文件到容器中并安装依赖
-COPY . /var/www/html
+COPY ../ /var/www/html
 
-RUN cd /var/www/html && composer install --no-ansi --no-interaction --no-scripts --no-progress --prefer-dist
+
+#RUN composer install --no-ansi --no-interaction --no-scripts --no-progress --prefer-dist
 
 #RUN composer install --no-ansi --no-interaction --no-scripts --no-progress --prefer-dist -vvv
 
@@ -31,3 +32,5 @@ RUN cd /var/www/html && composer install --no-ansi --no-interaction --no-scripts
 # 设置文件和目录的权限
 RUN chown -R www-data:www-data /var/www/html \
     && chmod -R 755 /var/www/html/storage
+
+#RUN cd /var/www/html && compose install
